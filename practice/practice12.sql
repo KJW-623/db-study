@@ -28,6 +28,8 @@ select name, jumin, birthday,
         END 분기
 from student;
 
+
+
 2.
 emp 테이블을 조회하여 empno , ename , sal , LEVEL(급여등급)을 출력하세요.
 단 급여등급은 sal 을 기준으로
@@ -44,5 +46,17 @@ select empno, ename, sal,
             when sal between 3001 and  4000 then 'Level 4'
             when sal between 4001 and  5000 then 'Level 5'
             else 'Level 1'
-        END 분기
+        END 급여등급
+from emp;
+
+--==============
+
+select empno, ename, sal,
+        CASE
+            when sal between 1001 and  2000 then 'Level 2'
+            when sal between 2001 and  3000 then 'Level 3'
+            when sal between 3001 and  4000 then 'Level 4'
+            when sal between 4001 and  5000 then 'Level 5'
+            else 'Level 1'
+        END 급여등급
 from emp;
