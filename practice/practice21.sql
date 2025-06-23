@@ -18,3 +18,15 @@ student 테이블에서 학생의 키가 동일 학년의 평균 키 보다 큰 
 (학년 컬럼으로 오름차순 정렬해서 출력하세요)
 select * from student;
 
+select grade, AVG(height)
+from student
+group by grade;
+
+select A.grade, A.name, A.height,
+        (select AVG(B.height) from student B
+            where B.grade = A.grade) avg_height
+from student A
+where A.height > (select AVG(B.height)
+                    from student B
+                    where B.grade = A.grade)
+Order by A.grade;
