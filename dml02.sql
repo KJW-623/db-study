@@ -142,3 +142,39 @@ WHERE work_date = '2025-03-02';
 UPDATE T_SHOE
 SET sales_income = 4900
 WHERE work_date = '2025-03-02' AND store_code=2;
+
+
+
+/*************************************/
+--본사 날짜별 전체 매출 취합 + 매장 판매유형 구분코드 추가 버전
+CREATE TABLE T_COMPANY TYPE
+( 
+    work_date DATE, --영업일
+    store_code NUMBER(3), --매장 고유 코드(PK)
+    sales_income NUMBER(10) -- 매출금액
+    store_type VARCHAR2(8) --매장 유형 구분코드 'C' 옷가게 / 's'신발가게
+};
+
+MERGE INTO T_COMPANY TYPE CP
+USING T_CLOTH CL
+ON (cp.work_date = cl.work_date AND cp.store_code = cl.store_code)
+WHEN MATCHED THEN
+    UPDATE SET cp.sales_income = cl.sales_income
+WHEN NOT MATCHED THEN
+    INSERT VALUES (cl.work_date, cl. store_code, cl.sales_income, 'C');
+    
+MERGE INTO T_COMPANY TYPE CP
+USING T_CLOTH T
+ON (cp.work_date = T.work_date AND cp.store_code = T.store_code)
+WHEN MATCHED THEN
+    UPDATE SET cp.sales_income = T.sales_income
+WHEN NOT MATCHED THEN
+    INSERT VALUES (T.work_date, T. store_code, T.sales_income, 'S');
+    
+select * 
+from T_COMPANY TYPE
+WHERE store_type 'C';
+
+select store_type, store_code, SUM(Sales_income)
+from T_COMPANY TYPE
+WHERE store_type, store_code 'C';
