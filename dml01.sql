@@ -111,4 +111,6 @@ select * from dept3;
 select * 
 -- delete 
 from dept3
-where dcode = 1007;
+where dcode = 1011;
+
+commit;
