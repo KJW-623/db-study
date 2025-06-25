@@ -31,6 +31,7 @@ where name = '라면';
 select * from T_MENU_12;
 
 
+commit;
 
 
 
