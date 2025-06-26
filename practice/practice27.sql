@@ -51,35 +51,35 @@ NOCYCLE;
 (*순번은 각 멤버ID 별로 자동 계산되어 저장하도록 해주세요)
 - 시퀀스 사용 -> id
 - 순번(no) -> 해당 학생이 시험을 치룬 회차 계산되서 저장
-INSERT INTO T_MEMBER_POINT (id, no, member_id, point, check_date)
+INSERT INTO T_MEMBER_POINT (id, turn, MID, score, grading)
 --VALUES ( T_MEMBER_POINT_PK_SEQ.nextval, 자동채번, 'A', 30, TO_DATE('2025-05-30') );
 VALUES ( T_MEMBER_POINT_PK_SEQ.nextval,
-            (SELECT COUNT(*)+1 FROM T_MEMBER_POINT WHERE member_id = 'A'),
+            (SELECT COUNT(*)+1 FROM T_MEMBER_POINT WHERE MID = 'A'),
             'A', 30, TO_DATE('2025-05-30') );
             
-INSERT INTO T_MEMBER_POINT (id, no, member_id, point, check_date)
+INSERT INTO T_MEMBER_POINT (id, turn, MID, score, grading)
 VALUES ( T_MEMBER_POINT_PK_SEQ.nextval,
-            (SELECT COUNT(*)+1 FROM T_MEMBER_POINT WHERE member_id = 'B'),
+            (SELECT COUNT(*)+1 FROM T_MEMBER_POINT WHERE MID = 'B'),
             'B', 40, SYSDATE );
             
-INSERT INTO T_MEMBER_POINT (id, no, member_id, point, check_date)
+INSERT INTO T_MEMBER_POINT (id, turn, MID, score, grading)
 VALUES ( T_MEMBER_POINT_PK_SEQ.nextval,
-            (SELECT COUNT(*)+1 FROM T_MEMBER_POINT WHERE member_id = 'C'),
+            (SELECT COUNT(*)+1 FROM T_MEMBER_POINT WHERE MID = 'C'),
             'C', 40, SYSDATE );
             
-INSERT INTO T_MEMBER_POINT (id, no, member_id, point, check_date)
+INSERT INTO T_MEMBER_POINT (id, turn, MID, score, grading)
 VALUES ( T_MEMBER_POINT_PK_SEQ.nextval,
-            (SELECT COUNT(*)+1 FROM T_MEMBER_POINT WHERE member_id = 'A'),
+            (SELECT COUNT(*)+1 FROM T_MEMBER_POINT WHERE MID = 'A'),
             'A', 50, SYSDATE );
 
-INSERT INTO T_MEMBER_POINT (id, no, member_id, point, check_date)
+INSERT INTO T_MEMBER_POINT (id, turn, MID, score, grading)
 VALUES ( T_MEMBER_POINT_PK_SEQ.nextval,
-            (SELECT COUNT(*)+1 FROM T_MEMBER_POINT WHERE member_id = 'B'),
+            (SELECT COUNT(*)+1 FROM T_MEMBER_POINT WHERE MID = 'B'),
             'B', 60, SYSDATE );
 
-INSERT INTO T_MEMBER_POINT (id, no, member_id, point, check_date)
+INSERT INTO T_MEMBER_POINT (id, turn, MID, score, grading)
 VALUES ( T_MEMBER_POINT_PK_SEQ.nextval,
-            (SELECT COUNT(*)+1 FROM T_MEMBER_POINT WHERE member_id = 'A'),
+            (SELECT COUNT(*)+1 FROM T_MEMBER_POINT WHERE MID = 'A'),
             'A', 70, SYSDATE );
 
 select * from T_MEMBER_POINT;
